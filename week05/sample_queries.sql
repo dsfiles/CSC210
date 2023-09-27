@@ -2,19 +2,6 @@ DROP DATABASE IF EXISTS `world_db` ;
 CREATE DATABASE IF NOT EXISTS `world_db`;
 USE `world_db`;
 
-CREATE TABLE `country` (
-  `Code` char(3) NOT NULL DEFAULT '',
-  `Name` char(52) NOT NULL DEFAULT '',
-  `Continent` enum('Asia','Europe','North America','Africa','Oceania','Antarctica','South America') NOT NULL DEFAULT 'Asia',
-  PRIMARY KEY (`Code`)
-);
-
-INSERT INTO `country` VALUES ('ABW','Aruba','North America');
-INSERT INTO `country` VALUES ('AFG','Alghanistan','Asia');
-INSERT INTO `country` VALUES ('AGO','Angolo','Africa');
-INSERT INTO `country` VALUES ('ALB','Albania','Europe');
-INSERT INTO `country` VALUES ('AND','Andorra','Europe');
-
 
 CREATE TABLE `countrylanguage` (
   `CountryCode` char(3) NOT NULL DEFAULT '',
@@ -27,10 +14,10 @@ CREATE TABLE `countrylanguage` (
 );
 
 INSERT INTO `countrylanguage` VALUES ('ABW','Dutch','T',5.3);
+INSERT INTO `countrylanguage` VALUES ('ABW','Papeiamento','F',76.7);
 INSERT INTO `countrylanguage` VALUES ('AFG','Balochi','F',0.9);
 INSERT INTO `countrylanguage` VALUES ('AGO','Kongo','F',13.2);
-INSERT INTO `countrylanguage` VALUES ('ALB','Albanian','T',97.9);
-INSERT INTO `countrylanguage` VALUES ('AND','Catalan','T',32.3);
+INSERT INTO `countrylanguage` VALUES ('AGO','Mbundu','F',21.6);
 
 
 CREATE TABLE `city` (
@@ -42,3 +29,9 @@ CREATE TABLE `city` (
   PRIMARY KEY (`ID`),
   KEY `CountryCode` (`CountryCode`),
   FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`));
+
+INSERT INTO `city` VALUES (1,'Kabul','AFG',1780000);
+INSERT INTO `city` VALUES (2,'Qandahar','AFG',237500);
+INSERT INTO `city` VALUES (56,'Luanda','AGO',2022000);
+INSERT INTO `city` VALUES (57,'Huambo','AGO',163100);
+INSERT INTO `city` VALUES (129,'Oranjestad','ABW',29034);
